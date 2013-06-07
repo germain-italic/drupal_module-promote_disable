@@ -1,1 +1,5 @@
 name = Promote Disable
+description = "Allows a user to disable the 'Promote to front page' option when creating nodes."
+package = Other
+core = 7.x
+configure = admin/config/content/promote_disable
