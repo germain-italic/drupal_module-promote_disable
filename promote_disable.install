@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_uninstall().
+ */
+function promote_disable_uninstall() {
+  variable_del('promote_disable_node_types');
+}

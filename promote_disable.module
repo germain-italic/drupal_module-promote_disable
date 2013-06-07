@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * @file
+ * Primarily Drupal hooks and helper functions.
+ *
+ * This is the main module file for Promote Disable.
+ */
+
+/**
  * Implements hook_menu().
  */
 function promote_disable_menu() {
@@ -11,7 +18,7 @@ function promote_disable_menu() {
     'description' => 'Configuration for Promote disable module.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('promote_disable_form'),
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('administer site configuration'),
     'type' => MENU_NORMAL_ITEM,
   );
 
@@ -19,7 +26,7 @@ function promote_disable_menu() {
 }
 
 /**
- * Page callback: Promote disable settings
+ * Page callback: Promote Disable settings.
  *
  * @see promote_disable_menu()
  */
@@ -49,9 +56,9 @@ function _promote_disable_node_types() {
     $options[$key] = $value->name;
   }
   asort($options);
-  return $options;  
+  return $options;
 }
- 
+
 /**
  * Implements hook_form_alter().
  */
@@ -68,13 +75,13 @@ function promote_disable_form_alter(&$form, &$form_state, $form_id) {
       $form['options']['promote']['#disabled'] = TRUE;
       // Add a submit function to the start of the #submit array.
       array_unshift($form['#submit'], '_promote_disable_form_submit');
+      $form['#submit'][] = '_promote_disable_form_submit';
     }
   }
 }
 
 /**
- * This function works to change the value of the "promoted"
- * form field if it happens to be set.
+ * Changes the value of the "promoted" form field if it is set.
  *
  * @see promote_disable_form_alter()
  */
@@ -82,4 +89,12 @@ function _promote_disable_form_submit($form, &$form_state) {
   // Change the appropriate values.
   $form_state['input']['promote'] = 0;
   $form_state['values']['promote'] = 0;
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function promote_disable_node_presave($node) {
+	$node->promote = 0;
+	dpm($node);
 }
