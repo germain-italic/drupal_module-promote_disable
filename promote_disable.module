@@ -32,8 +32,8 @@ function promote_disable_menu() {
  */
 function promote_disable_form($form, &$form_state) {
   $node_types = _promote_disable_node_types();
-    
-    $form = array();
+
+  $form = array();
   $form['promote_disable_explanation'] = array(
     '#markup' => t('Select the content types on which you would like to disable the "Promoted to front page" option.'),
   );
