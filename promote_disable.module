@@ -82,7 +82,15 @@ function promote_disable_form_alter(&$form, &$form_state, $form_id) {
   }
   // Are we on a node type form?
   elseif ($form_id == 'node_type_form') {
-    unset($form['workflow']['node_options']['#options']['promote']);
+    // The current form's node type.
+    $node_type = $form['type']['#default_value'];
+    // Our saved node types.
+    $node_types = variable_get('promote_disable_node_types', array());
+    // Is this node type one we've set?
+    if (in_array($node_type, $node_types)) {
+      // Remove the option.
+      unset($form['workflow']['node_options']['#options']['promote']);
+    }
   }
 }
 
