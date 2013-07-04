@@ -38,10 +38,10 @@ function promote_disable_form($form, &$form_state) {
     '#type' => 'select',
     '#multiple' => TRUE,
     '#size' => count($node_types),
-    '#title' => t('Node types'),
+    '#title' => t('Content types'),
     '#default_value' => variable_get('promote_disable_node_types', array()),
     '#options' => $node_types,
-    '#description' => t('Select the node types on which you would like to disable the "Promoted to front page" option.'),
+    '#description' => t('Select the content types on which you would like to disable the "Promoted to front page" option.'),
   );
 
   return system_settings_form($form);
