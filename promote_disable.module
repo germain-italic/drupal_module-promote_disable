@@ -14,7 +14,6 @@
  */
 function promote_disable_menu() {
   $items = array();
-
   $items['admin/config/content/promote_disable'] = array(
     'title' => 'Promote disable',
     'description' => 'Configuration for Promote disable module.',
@@ -23,7 +22,6 @@ function promote_disable_menu() {
     'access arguments' => array('administer content types'),
     'type' => MENU_NORMAL_ITEM,
   );
-
   return $items;
 }
 
@@ -34,7 +32,6 @@ function promote_disable_menu() {
  */
 function promote_disable_form($form, &$form_state) {
   $node_types = _promote_disable_node_types();
-
   $form['promote_to_front_page'] = array(
     '#type' => 'fieldset',
     '#title' => t('Promote to front page'),
@@ -48,7 +45,6 @@ function promote_disable_form($form, &$form_state) {
     '#options' => $node_types,
     '#description' => t('Select the content types on which you would like to disable the "Promoted to front page" option.'),
   );
-
   $form['sticky'] = array(
     '#type' => 'fieldset',
     '#title' => t('Make content sticky'),
@@ -62,7 +58,6 @@ function promote_disable_form($form, &$form_state) {
     '#options' => $node_types,
     '#description' => t('Select the content types on which you would like to disable the "Stikcy option.'),
   );
-
   return system_settings_form($form);
 }
 
