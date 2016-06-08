@@ -58,6 +58,12 @@ function promote_disable_form($form, &$form_state) {
     '#options' => $node_types,
     '#description' => t('Select the content types on which you would like to disable the "Sticky option.'),
   );
+  $form['promote_disabled_node_admin_content'] = array(
+    '#type' => 'checkbox',
+    '#default_value' => variable_get('promote_disabled_node_admin_content', FALSE),
+    '#title' => t('Remove options.'),
+    '#description' => t('Remove the "Promote selected content to the front page" and "Demote selected content from the front page" options from the !content_overview_page.', array('!content_overview_page' => l(t('content overview page'), 'admin/content', array('attributes' => array('target' => '_blank'))))),
+  );
   return system_settings_form($form);
 }
 
@@ -155,5 +161,19 @@ function promote_disable_node_presave($node) {
   // Is this node type one we've set?
   if (in_array($node->type, $node_types)) {
     $node->promote = 0;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Remove promote and demote update options on admin/content if configured.
+ */
+function promote_disable_form_node_admin_content_alter(&$form, &$form_state, $form_id) {
+  if (variable_get('promote_disabled_node_admin_content', FALSE)) {
+    $options = array('demote', 'promote');
+    foreach ($options as $key) {
+      unset($form['admin']['options']['operation']['#options'][$key]);
+    }
   }
 }
