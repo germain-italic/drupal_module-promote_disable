@@ -1,7 +1,7 @@
 {
     "name": "germain/drupal_module-promote_disable",
     "description": "Clone of https://www.drupal.org/project/promote_disable with D10 compatibility patch",
-    "type": "drupal-module-custom",
+    "type": "drupal-custom-module",
     "keywords": ["Drupal", "promote_disable"],
     "license": "gnu",
     "authors": [
