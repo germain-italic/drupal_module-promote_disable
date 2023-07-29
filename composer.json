@@ -1,5 +1,5 @@
 {
-    "name": "germain/drupal_module-promote_disable",
+    "name": "germain-italic/drupal_module-promote_disable",
     "description": "Clone of https://www.drupal.org/project/promote_disable with D10 compatibility patch",
     "type": "drupal-custom-module",
     "keywords": ["Drupal", "promote_disable"],
