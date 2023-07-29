@@ -3,9 +3,11 @@
 - Original Drupal module: https://www.drupal.org/project/promote_disable
 
 # Why?
+- Official module compatible with D10
 - Can't fork modules on git.drupalcode.org
 - Maintainer did not validate D10 patch
 - Can't require the module and apply the patch lately because of `^9` requirement not met in D10 installation
+- I was not aware of that: https://gorannikolovski.com/blog/how-to-upgrade-drupal-9-to-10#how-to-install-modules
 
 # Modifications:
 - Created a new branch `10.x-1.x`
